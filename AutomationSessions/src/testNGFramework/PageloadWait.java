@@ -30,6 +30,7 @@ public class PageloadWait {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Downloads')]")));
 		driver.findElement(By.xpath("//a[contains(text(),'Downloads')]")).click();
 		driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+		System.out.println("PageLoad Successful");
 	}
 	
 	
