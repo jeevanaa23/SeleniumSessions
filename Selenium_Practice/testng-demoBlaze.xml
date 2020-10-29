@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="testNGFramework">
+	<test name="DemoBlazeSignupLogin">
+		<classes>
+			<class name="testNGFramework.DemoBlazeSignupLogin">
+			</class>
+			</classes>
+			</test>
+			<test name="DemoBlazePlaceOrder">
+			<classes>
+			<class name="testNGFramework.DemoBlazeplaceOrder">
+	</class>
+		</classes>
+	</test>
+	</suite> <!-- Suite -->
