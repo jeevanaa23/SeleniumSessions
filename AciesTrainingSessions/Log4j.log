@@ -1,0 +1,5 @@
+2021-04-09 11:44:53 DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache:187 - Resolution chrome=89 in cache (valid until 12:40:06 09/04/2021 IST)
+2021-04-09 11:44:53 DEBUG io.github.bonigarcia.wdm.cache.ResolutionCache:187 - Resolution chrome89=89.0.4389.23 in cache (valid until 16:29:22 09/04/2021 IST)
+2021-04-09 11:44:53 INFO  io.github.bonigarcia.wdm.WebDriverManager:606 - Using chromedriver 89.0.4389.23 (resolved driver for Chrome 89)
+2021-04-09 11:44:53 DEBUG io.github.bonigarcia.wdm.WebDriverManager:563 - Driver chromedriver 89.0.4389.23 found in cache
+2021-04-09 11:44:53 INFO  io.github.bonigarcia.wdm.WebDriverManager:662 - Exporting webdriver.chrome.driver as C:\Users\admin\.cache\selenium\chromedriver\win32\89.0.4389.23\chromedriver.exe

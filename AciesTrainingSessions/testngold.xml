@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="TestNGSuite">
+	<listeners>
+		<listener class-name="listernerPackages.TestNGListeners"></listener>
+		<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+	</listeners>
+
+	<!--  <groups>
+		<run>
+			<include name="Run">
+			</include>
+		</run>
+	</groups>-->
+	<test name="FirefoxTest">
+		<!--  parameter name="browser" value="firefox">
+		</parameter>-->
+		<classes>
+			<class name="seleniumPractice.AssertionsExample">
+			</class>
+		</classes>
+	</test>
+
+	<!--<test name="JQueryExample"> <classes> <class name="seleniumPractice.JquerySliders"> 
+		</class> </classes> </test>! -->
+
+</suite> 

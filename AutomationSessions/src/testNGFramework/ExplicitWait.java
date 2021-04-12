@@ -1,7 +1,5 @@
 package testNGFramework;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -29,6 +27,7 @@ public class ExplicitWait {
 		WebDriverWait wait=new WebDriverWait(driver,5);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Downloads')]")));
 		driver.findElement(By.xpath("//a[contains(text(),'Downloads')]")).click();
+		
 	}
 	
 	

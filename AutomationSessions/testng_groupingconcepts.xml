@@ -6,12 +6,12 @@
 			<run>
 				<include name="X">
 				</include>
+				<exclude name="Y">
+				</exclude>
 			</run>
 		</groups>
 		<classes>
 			<class name="testNGFramework.Groupingconcept"></class>
 		</classes>
 	</test> <!-- Test -->
-
-
 </suite> <!-- Suite -->
