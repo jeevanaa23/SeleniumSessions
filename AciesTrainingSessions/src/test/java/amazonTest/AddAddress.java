@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -20,54 +21,46 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 public class AddAddress extends SearchProduct {
-	WebDriver driver;
-	Properties prop;
+	public static WebDriver driver;
+	public static Properties prop;
 	Workbook book;
 	Sheet sheet;
 	static Logger log = Logger.getLogger(AddAddress.class);
 	Object rowValue;
+	HashMap<Object,Object> datas=new HashMap<Object, Object>();
 
 	public AddAddress(WebDriver driver, Properties prop) {
 		this.driver = driver;
 		this.prop = prop;
 	}
 
-	public void newAddress(WebDriver driver, Properties prop) throws EncryptedDocumentException, IOException {
+	@DataProvider
+	public Object[][]  newAddress(WebDriver driver, Properties prop) throws EncryptedDocumentException, IOException, InterruptedException {
 		log.info("Entering Add Address");
-		String Testdatasheet = prop.getProperty("excelPath");
-		ArrayList<Object> list=new ArrayList<Object>();
-		File file = new File(Testdatasheet);
-		FileInputStream inputStream = new FileInputStream(file);
-		XSSFWorkbook wb = new XSSFWorkbook(inputStream);
-		XSSFSheet sheet = wb.getSheet("Sheet1");
-		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
-		//Iterator<RowIterator> row=sheet.rowIterator();
-		for (int i = 0; i <= rowCount; i++) {
-			int cellcount = sheet.getRow(i).getLastCellNum();
-			System.out.println("Row" + i + " data is :");
-			for (int j = 0; j < cellcount; j++) {
-				if (sheet.getRow(i).getCell(j).getCellType() == CellType.STRING) {
-					System.out.print(sheet.getRow(i).getCell(j).getStringCellValue() + ",");
-					rowValue = sheet.getRow(i).getCell(j).getStringCellValue();
-				} else if (sheet.getRow(i).getCell(j).getCellType() == CellType.NUMERIC) {
-					rowValue = sheet.getRow(i).getCell(j).getNumericCellValue();
-					System.out.print(sheet.getRow(i).getCell(j).getNumericCellValue());
-				}
-				list.add(rowValue);
-			}
-
-			
+		dataRetrieveUtils dr=new dataRetrieveUtils(driver, prop);
+		return dr.dataret();
+		
 		}
-		Iterator<Object> it=list.iterator();
-		while(it.hasNext()) {
-			System.out.println("Arraylist Items"+it.next());
-		}
-		//System.out.println("Arraylist Items"+list);
+		/*
+		 * Iterator<Object> it=list.iterator(); while(it.hasNext()) {
+		 * System.out.println("Arraylist Items"+it.next()); }
+		 * //System.out.println("Arraylist Items"+list);
+		 */	
+	@Test(dataProvider="newAddress")
+	public void a_loadData(HashMap<Object,Object> data) throws InterruptedException {
+		log.info("TestMethod");
+		datas.putAll(data);
+		addnewAddress(datas);
+		
 	}
 	
-	public void newAddress() throws InterruptedException {
+	public void addnewAddress(HashMap<Object, Object> datas) throws InterruptedException {
+		log.info("Entering data Provider Add Address");
+		log.info(datas);
 		WebElement mouseac = driver.findElement(By.xpath("//span[@class='nav-line-2 nav-long-width']"));
 		Actions mouse = new Actions(driver);
 		mouse.moveToElement(mouseac).build().perform();
@@ -83,11 +76,12 @@ public class AddAddress extends SearchProduct {
 		 * xpath("//span[@class='a-button-text a-declarative']")));
 		 * country.selectByVisibleText("India");
 		 */
-		driver.findElement(By.xpath("//input[@id='address-ui-widgets-enterAddressFullName']")).sendKeys("Krithick");
-		driver.findElement(By.xpath("//input[@id='address-ui-widgets-enterAddressPhoneNumber']")).sendKeys("9876543210");
-		driver.findElement(By.xpath("//input[@id='address-ui-widgets-enterAddressPostalCode']")).sendKeys("624301");
-		driver.findElement(By.xpath("//input[@id='address-ui-widgets-enterAddressLine1']")).sendKeys("3/245");
-		driver.findElement(By.xpath("//input[@id='address-ui-widgets-enterAddressCity']")).sendKeys("Chinnalapatti");
+		log.info("Typing FullName"+datas.get("FullName").toString());
+		driver.findElement(By.id("address-ui-widgets-enterAddressFullName")).sendKeys(datas.get("FullName").toString());
+		driver.findElement(By.id("address-ui-widgets-enterAddressPhoneNumber")).sendKeys(datas.get("Mobile Number").toString());
+		driver.findElement(By.id("address-ui-widgets-enterAddressPostalCode")).sendKeys(datas.get("Pin").toString());
+		driver.findElement(By.id("address-ui-widgets-enterAddressLine1")).sendKeys(datas.get("Door.No").toString());
+		driver.findElement(By.id("address-ui-widgets-enterAddressCity")).sendKeys(datas.get("City").toString());
 		driver.findElement(By.xpath("//input[@id='address-ui-widgets-enterAddressCity']/following::span[5]")).click();
 		driver.findElement(By.xpath("//a[@id='address-ui-widgets-enterAddressStateOrRegion-dropdown-nativeId_30']")).click();
 		

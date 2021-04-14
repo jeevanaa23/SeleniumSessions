@@ -46,8 +46,8 @@ public class AssertionsExample {
 	public void b_softassertEquals() {
 		SoftAssert soa=new SoftAssert();
 		textData = driver.findElement(By.id("site-name")).getText();
-		soa.assertEquals(textData, "SeleniumEasy", "AssertEquals Pass");
-		soa.assertNotEquals("SeleniumEasy", textData, "Both are equal");
+		soa.assertEquals(textData, "Selenium Easy", "AssertEquals Pass");
+		soa.assertNotEquals("Selenium Easy", textData, "Both are equal");
 		soa.assertTrue(driver.findElement(By.id("site-name")).getText().equals("Selenium Easy"),"Assertion True");
 		soa.assertAll();
 	}
