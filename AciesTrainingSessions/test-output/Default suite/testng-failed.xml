@@ -5,8 +5,8 @@
     <classes>
       <class name="amazonTest.SearchProduct">
         <methods>
-          <include name="b_searchproduct"/>
           <include name="readPropfile"/>
+          <include name="c_addAddress" invocation-numbers="0 1"/>
         </methods>
       </class> <!-- amazonTest.SearchProduct -->
     </classes>

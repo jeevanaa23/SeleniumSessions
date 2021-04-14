@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -85,11 +86,22 @@ public class SearchProduct {
 		//ord.read_Orderhistory(driver, prop);
 		
 		}
-	@Test()
-	public void c_addAddress() throws EncryptedDocumentException, IOException, InterruptedException {
-		AddAddress newad = new AddAddress(driver, prop);
-		newad.newAddress(driver, prop);
+	
+	@DataProvider(name = "newAddress")
+	public Object[][] newAddress()throws EncryptedDocumentException, IOException, InterruptedException {
+		log.info("Entering Add Address");
+		dataRetrieveUtils dr = new dataRetrieveUtils(driver, prop);
+		Object data[][] = dr.dataret();
+		return data;
 
+	}
+	
+	@Test(dataProvider="newAddress")
+	public void c_addAddress(HashMap<Object,Object> data) throws EncryptedDocumentException, IOException, InterruptedException {
+		AddAddress newad = new AddAddress(driver, prop);
+		//newad.newAddress(driver, prop);
+		//newad.addnewAddress(data);
+		newad.assertExistingAdd();
 	
 		
 	}
