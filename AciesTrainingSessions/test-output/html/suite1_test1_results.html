@@ -3,16 +3,16 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
 <head>
-  <title>Test Results Report - FirefoxTest</title>
+  <title>Test Results Report - SearchProduct</title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <meta name="description" content="TestNG unit test results." />
   <link href="reportng.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="reportng.js"></script>
 </head>
 <body>
-<h1>FirefoxTest</h1>
+<h1>SearchProduct</h1>
 <p>
-  Test duration: 17.621s
+  Test duration: 31.373s
 </p>
 
 
@@ -20,30 +20,84 @@
   <table class="resultsTable">
     <tr><th colspan="3" class="header failed">Failed Tests</th></tr>
           <tr>
-        <td colspan="3" class="group">seleniumPractice.AssertionsExample</td>
+        <td colspan="3" class="group">amazonTest.SearchProduct</td>
       </tr>
             
 <tr>
   <td class="method">
-                  b_softassertEquals
+                  c_addAddress
       </td>
   <td class="duration">
-    0.087s
+    1.919s
   </td>
   <td class="result">
         
+          <i>Method arguments: </i><span class="arguments">{Landmark=Poonjolai, State=TamilNadu, Door.No=51.0, Mobile Number=8.965412378E9, City=Chinnalapatti, Pin=624301.0, FullName=Saathvik}</span><br />
     
-            <div class="testOutput">
-                        &lt;a href=&quot;.\Screeshots\error.jpeg&quot;&gt;ScreenShotLink&lt;/a&gt;<br />
-                  </div>
-    
+        
 
-        <a href="javascript:toggleElement('exception-0', 'block')" title="Click to expand/collapse"><b>java.lang.AssertionError: The following asserts failed:<br/>
-	AssertEquals Pass expected [SeleniumEasy] but found [Selenium Easy]</b></a><br />
+        <a href="javascript:toggleElement('exception-0', 'block')" title="Click to expand/collapse"><b>java.lang.AssertionError: Address already Exists expected [true] but found [false]</b></a><br />
     <div class="stackTrace" id="exception-0">
-              org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)<br />
-              org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)<br />
-              seleniumPractice.AssertionsExample.b_softassertEquals(AssertionsExample.java:52)<br />
+              org.testng.Assert.fail(Assert.java:99)<br />
+              org.testng.Assert.failNotEquals(Assert.java:1037)<br />
+              org.testng.Assert.assertEqualsImpl(Assert.java:140)<br />
+              org.testng.Assert.assertEquals(Assert.java:122)<br />
+              org.testng.Assert.assertEquals(Assert.java:819)<br />
+              amazonTest.AddAddress.assertExistingAdd(AddAddress.java:73)<br />
+              amazonTest.SearchProduct.c_addAddress(SearchProduct.java:111)<br />
+              java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
+              java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)<br />
+              java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
+              java.base/java.lang.reflect.Method.invoke(Method.java:564)<br />
+              org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)<br />
+              org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)<br />
+              org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)<br />
+              org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)<br />
+              org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)<br />
+              org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)<br />
+              org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)<br />
+              org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)<br />
+              java.base/java.util.ArrayList.forEach(ArrayList.java:1511)<br />
+              org.testng.TestRunner.privateRun(TestRunner.java:764)<br />
+              org.testng.TestRunner.run(TestRunner.java:585)<br />
+              org.testng.SuiteRunner.runTest(SuiteRunner.java:384)<br />
+              org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)<br />
+              org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)<br />
+              org.testng.SuiteRunner.run(SuiteRunner.java:286)<br />
+              org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)<br />
+              org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)<br />
+              org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)<br />
+              org.testng.TestNG.runSuitesLocally(TestNG.java:1140)<br />
+              org.testng.TestNG.runSuites(TestNG.java:1069)<br />
+              org.testng.TestNG.run(TestNG.java:1037)<br />
+              org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)<br />
+              org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)<br />
+              org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)<br />
+                </div>
+      </td>
+</tr>
+<tr>
+  <td class="method">
+                  c_addAddress
+      </td>
+  <td class="duration">
+    2.367s
+  </td>
+  <td class="result">
+        
+          <i>Method arguments: </i><span class="arguments">{Landmark=Gandhigram, State=TamilNadu, Door.No=3/245,Rajiv Gandhi Nagar, By-Pass Road,, Mobile Number=9.87654321E9, City=Chinnalapatti, Pin=624301.0, FullName=Krithick M}</span><br />
+    
+        
+
+        <a href="javascript:toggleElement('exception-1', 'block')" title="Click to expand/collapse"><b>java.lang.AssertionError: Address already Exists expected [true] but found [false]</b></a><br />
+    <div class="stackTrace" id="exception-1">
+              org.testng.Assert.fail(Assert.java:99)<br />
+              org.testng.Assert.failNotEquals(Assert.java:1037)<br />
+              org.testng.Assert.assertEqualsImpl(Assert.java:140)<br />
+              org.testng.Assert.assertEquals(Assert.java:122)<br />
+              org.testng.Assert.assertEquals(Assert.java:819)<br />
+              amazonTest.AddAddress.assertExistingAdd(AddAddress.java:73)<br />
+              amazonTest.SearchProduct.c_addAddress(SearchProduct.java:111)<br />
               java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
               java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)<br />
               java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
@@ -77,34 +131,11 @@
 </tr>
       </table>
 
-  <table class="resultsTable" width="100%">
-    <tr><th colspan="3" class="header skipped">Skipped Tests</th></tr>
-          <tr>
-        <td colspan="3" class="group">seleniumPractice.AssertionsExample</td>
-      </tr>
-            
-<tr>
-  <td class="method">
-                  c_asssertNotequal
-      </td>
-  <td class="duration">
-    0.000s
-  </td>
-  <td class="result">
-                             <i>Depends on method(s): </i>
-        <span class="dependency">seleniumPractice.AssertionsExample.b_softassertEquals, seleniumPractice.AssertionsExample.a_pageload</span>
-                
-    
-        
-
-      </td>
-</tr>
-      </table>
 
   <table class="resultsTable">
     <tr><th colspan="3" class="header passed">Passed Tests</th></tr>
           <tr>
-        <td colspan="3" class="group">seleniumPractice.AssertionsExample</td>
+        <td colspan="3" class="group">amazonTest.SearchProduct</td>
       </tr>
             
 <tr>
@@ -112,7 +143,21 @@
                   a_pageload
       </td>
   <td class="duration">
-    17.534s
+    8.336s
+  </td>
+  <td class="result">
+        
+    
+        
+
+      </td>
+</tr>
+<tr>
+  <td class="method">
+                  b_searchproduct
+      </td>
+  <td class="duration">
+    18.741s
   </td>
   <td class="result">
         

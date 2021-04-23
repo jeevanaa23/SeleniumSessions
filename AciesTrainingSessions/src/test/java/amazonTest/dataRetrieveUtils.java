@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Properties;
 
 import org.apache.poi.ss.usermodel.CellType;
@@ -23,7 +24,7 @@ public class dataRetrieveUtils extends AddAddress {
 	public Object[][] dataret() throws IOException{
 		
 		String Testdatasheet = prop.getProperty("excelPath");
-		HashMap<Object, Object> datas = new HashMap<Object, Object>();
+		Hashtable<Object, Object> datas = null;
 		File file = new File(Testdatasheet);
 		FileInputStream inputStream = new FileInputStream(file);
 		XSSFWorkbook wb = new XSSFWorkbook(inputStream);
@@ -34,6 +35,7 @@ public class dataRetrieveUtils extends AddAddress {
 		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
 		//Iterator<RowIterator> row=sheet.rowIterator();
 		for (int i = 0; i < rowCount; i++) {
+			datas=new Hashtable<Object,Object>();
 			int cellcount = sheet.getRow(i).getLastCellNum();
 		//	System.out.println("Row" + i + " data is :");
 			for (int j = 0; j < cellcount; j++) {

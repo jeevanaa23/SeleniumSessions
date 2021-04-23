@@ -51,8 +51,7 @@ public class TakingScreenshot {
 		 * +System.currentTimeMillis()+ ".jpeg"); FileUtils.copyFile(srcFile,
 		 * screenshotLoc);
 		 */
-		Screenshot scrn = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(500)).takeScreenshot(driver,
-				driver.findElement(By.xpath("//h2/a[text()='jQuery UI']")));
+		Screenshot scrn = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
 		ImageIO.write(scrn.getImage(), "jpeg", new File(".\\Screeshots\\Asot" + System.currentTimeMillis() + ".jpeg"));
 	}
 

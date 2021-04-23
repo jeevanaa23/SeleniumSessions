@@ -29,7 +29,7 @@ public class TestNGListeners implements ITestListener {
 
 	public void onTestFailure(ITestResult result) {
 		System.setProperty("org.uncommon.reportng.escape-output", "false");
-		Reporter.log("<a href=\".\\Screeshots\\error.jpeg\">ScreenShotLink</a>");
+		//Reporter.log("<a href=\".\\Screeshots\\error.jpeg\">ScreenShotLink</a>");
 		System.out.println("Method failed"+result.getName());
 		try {
 			TakeScrenshotFailure.takeScreenshot();
@@ -56,7 +56,7 @@ public class TestNGListeners implements ITestListener {
 	}
 
 	public void onFinish(ITestContext context) {
-		System.out.println("Mail Sent");
+	//	System.out.println("Mail Sent");
 		
 	}
 

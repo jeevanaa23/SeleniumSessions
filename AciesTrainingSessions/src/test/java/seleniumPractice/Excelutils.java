@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Hashtable;
 
+import org.apache.commons.collections4.map.MultiValueMap;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -16,7 +18,7 @@ import org.testng.annotations.Test;
 public class Excelutils {
 	WebDriver driver;
 
-	public static String Testdatasheet = "D:\\Selenium\\New_Workspace\\SeleniumSessions\\AciesTrainingSessions\\Excel\\TestData.xlsx";
+	public static String Testdatasheet = "D:\\Workspace\\SeleniumSessions\\AciesTrainingSessions\\Excel\\TestData.xlsx";
 	public static File file = new File(Testdatasheet);
 
 	/*
@@ -34,11 +36,12 @@ public class Excelutils {
 		XSSFRow row;
 		String key;
 		Object val;
-		HashMap<Object, Object> datas = new HashMap<Object, Object>();
+	HashMap<Object,Object> datas=null;
 		Object[][] data = new Object[sheet.getLastRowNum()][1];
 		int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
 		//Iterator<RowIterator> row=sheet.rowIterator();
 		for (int i = 0; i < rowCount; i++) {
+			datas=new HashMap<Object,Object>();
 			int cellcount = sheet.getRow(i).getLastCellNum();
 		//	System.out.println("Row" + i + " data is :");
 			for (int j = 0; j < cellcount; j++) {

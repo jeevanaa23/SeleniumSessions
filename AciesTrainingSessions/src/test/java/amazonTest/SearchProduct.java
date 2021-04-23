@@ -1,12 +1,17 @@
 package amazonTest;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -18,6 +23,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+@Listeners(listernerPackages.AmazontestNGListeners.class)
 public class SearchProduct {
 
 	static Logger log = Logger.getLogger(SearchProduct.class);
@@ -32,7 +39,7 @@ public class SearchProduct {
 		log.info("Entered SearchProduct");
 		Properties prop = new Properties();
 		FileInputStream ip = new FileInputStream(
-				"D:\\Selenium\\New_Workspace\\SeleniumSessions\\AciesTrainingSessions\\src\\test\\resources\\read.properties");
+				"D:\\Workspace\\SeleniumSessions\\AciesTrainingSessions\\src\\test\\resources\\read.properties");
 		prop.load(ip);
 		driverPath = prop.getProperty("chromeDriverpath");
 		mobModel = prop.getProperty("mobileModel");
@@ -46,8 +53,8 @@ public class SearchProduct {
 	@Test
 	public void a_pageload() throws InterruptedException {
 		log.info("Entering a_PageLoad");
-		System.setProperty("webdriver.chrome.driver", driverPath);
-		driver = new ChromeDriver();
+		WebDriverManager.chromedriver().setup();
+	    driver = new ChromeDriver();
 		driver.get("https://www.amazon.in/");
 		driver.manage().window().maximize();
 		wait = new WebDriverWait(driver, 5);
@@ -82,8 +89,8 @@ public class SearchProduct {
 				
 			}
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='nav-line-2 nav-long-width']")));
-		//Orderhistory ord = new Orderhistory();
-		//ord.read_Orderhistory(driver, prop);
+	    Orderhistory ord = new Orderhistory();
+		ord.read_Orderhistory(driver, prop);
 		
 		}
 	
@@ -97,11 +104,12 @@ public class SearchProduct {
 	}
 	
 	@Test(dataProvider="newAddress")
-	public void c_addAddress(HashMap<Object,Object> data) throws EncryptedDocumentException, IOException, InterruptedException {
+	public void c_addAddress(Hashtable<Object,Object> data) throws EncryptedDocumentException, IOException, InterruptedException {
 		AddAddress newad = new AddAddress(driver, prop);
 		//newad.newAddress(driver, prop);
-		//newad.addnewAddress(data);
-		newad.assertExistingAdd();
+		newad.addnewAddress(data);
+		newad.assertExistingAdd(data);
+		//Assert.fail();
 	
 		
 	}

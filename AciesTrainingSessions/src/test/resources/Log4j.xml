@@ -15,7 +15,7 @@
 	<appender name="default.file"
 		class="org.apache.log4j.FileAppender">
 		<param name="File"
-			value="D:/Selenium/Workspace/AciesTrainingSessions/Log4j.log" />
+			value="D:/Workspace/SeleniumSessions/AciesTrainingSessions/Log4j.log" />
 		<param name="append" value="false" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern"
