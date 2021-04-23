@@ -1,41 +1,40 @@
 package Steps;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Script {
 	
 	WebDriver driver;
-	@Given("Open the Chrome Browser and start the application")
-	public void open_the_Chrome_Browser_and_start_the_application() {
-	    // Write code here that turns the phrase above into concrete actions
-		System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\Essentials\\chromedriver_win32\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.get("http://zero.webappsecurity.com/");
+	
+	@Given("Open the Browser and enter Wikipedia")
+	public void open_the_Browser_and_enter_Wikipedia() {
+		WebDriverManager.chromedriver().setup();
+	    driver = new ChromeDriver();
+		driver.get("https://wikipedia.org");
 		driver.manage().window().maximize();
 	}
 
-	@When("Enter Valid Credentials and Submit")
-	public void enter_Valid_Credentials_and_Submit() throws InterruptedException {
-	    // Write code here that turns the phrase above into concrete actions
-		driver.findElement(By.id("signin_button")).click();
-		Thread.sleep(2000);
-		driver.findElement(By.name("user_login")).sendKeys("username");
-		driver.findElement(By.xpath("//input[@id='user_password']")).sendKeys("password");
-		driver.findElement(By.name("submit")).click();
-	   
+	@When("Type the search query and hit enter")
+	public void type_the_search_query_and_hit_enter() {
+	    driver.findElement(By.id("searchInput")).sendKeys("covid 19");
+	    driver.findElement(By.id("searchInput")).sendKeys(Keys.ENTER);
+	    driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 	}
 
-	@Then("User should be logged in Successfully")
-	public void user_should_be_logged_in_Successfully() {
-	    // Write code here that turns the phrase above into concrete actions
-		System.out.println(driver.getTitle());
-	   
+	@Then("Click on Talks")
+	public void click_on_Talks() {
+		System.out.println(driver.findElement(By.tagName("a")).getSize());
+		driver.findElement(By.xpath("//li[@id='ca-talk']/a")).click();
+	
 	}
-
 }
