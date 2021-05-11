@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="extentReports.ExtentreportTest">
+      <class name="pageObjectModel.pageObjectTest">
         <methods>
-          <include name="isSkip"/>
-          <include name="doUserReg"/>
+          <include name="b_signInsignOut"/>
         </methods>
-      </class> <!-- extentReports.ExtentreportTest -->
+      </class> <!-- pageObjectModel.pageObjectTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
